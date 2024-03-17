@@ -1,0 +1,26 @@
+<mat-toolbar color="primary mat-toolbar">
+  <button mat-icon-button (click)="isSideBarOpened = !isSideBarOpened">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Dashboard</span>
+  <span class="item-spacer"></span>
+  <button mat-icon-button>
+    <mat-icon>search</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="container">
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" [(opened)]="isSideBarOpened">
+      Sidenav content
+    </mat-sidenav>
+    <mat-sidenav-content>
+      conetnasf
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
