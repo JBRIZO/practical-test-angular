@@ -1,0 +1,56 @@
+.sidebar-container {
+    height: 100%;
+
+    .user {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 10px;
+        min-width: 300px;
+
+        .user-icon {
+            min-width: 100px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .user-info {
+            flex-grow: 1;
+
+            .email {
+                color: gray;
+            }
+        }
+    }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .content > * {
+        height: 100%;
+    }
+
+    .links-container {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+
+        li {
+            list-style: none;
+        }
+    }
+
+}
+
+button {
+    display: flex;
+    
+}

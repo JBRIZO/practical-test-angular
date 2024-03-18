@@ -1,0 +1,23 @@
+<mat-sidenav-container class="sidebar-container">
+    <mat-sidenav #sidenav mode="side" [(opened)]="isSideBarOpened" class="sidebar">
+      <div class="user">
+        <div class="user-icon">
+          <mat-icon>search</mat-icon>
+        </div>
+        <div class="user-info">
+          <h2 class="username">User</h2>
+          <p class="email">email</p>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="links-container">
+        <ul>
+          <li><a mat-button routerLink="/home" routerLinkActive="home">Home</a></li>
+          <li><a mat-button routerLink="/about" routerLinkActive="about">About</a></li>
+        </ul>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+      <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
