@@ -34,11 +34,19 @@ const meta: Meta<AddButtonComponent> = {
 export default meta;
 type Story = StoryObj<AddButtonComponent>;
 
-export const Default: Story = {
+export const Active: Story = {
   args: {
     section: {
-        name: 'Home',
+        name: 'Active',
         link: 'home'
+    },
+  },
+};
+export const Inactive: Story = {
+  args: {
+    section: {
+        name: 'Inactive',
+        link: 'link'
     },
   },
 };

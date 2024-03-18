@@ -1,0 +1,19 @@
+.container {
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+
+    .card {
+        flex-grow: 1;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .container {
+        flex-direction: row;
+        column-gap: 15px;
+        justify-content: space-between;
+    }
+  }
+
