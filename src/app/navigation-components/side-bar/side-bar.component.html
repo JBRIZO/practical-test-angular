@@ -27,10 +27,7 @@
       </div>
       <mat-divider></mat-divider>
       <div class="links-container">
-        <ul>
-          <li><a mat-button routerLink="/home" routerLinkActive="home">Home</a></li>
-          <li><a mat-button routerLink="/about" routerLinkActive="about">About</a></li>
-        </ul>
+        <app-add-button *ngFor="let section of sections" [section]="section"></app-add-button>
       </div>
     </mat-sidenav>
     <mat-sidenav-content class="content">

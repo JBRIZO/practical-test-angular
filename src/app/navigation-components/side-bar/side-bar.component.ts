@@ -8,11 +8,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 import { User } from '../../shared/interfaces/user.interface';
 import { UserService } from '../../shared/services/user.service';
+import { AddButtonComponent } from '../../shared/components/add-button/add-button.component';
+import { APP_SECTIONS } from '../../shared/constants/sections';
 
 @Component({
   selector: 'app-side-bar',
   standalone: true,
-  imports: [HttpClientModule, MatSidenavModule,CommonModule, MatDividerModule, MatIconModule, RouterModule, MatButtonModule, RouterLinkActive, RouterLink, RouterOutlet],
+  imports: [HttpClientModule, MatSidenavModule,CommonModule, MatDividerModule, MatIconModule, RouterModule, MatButtonModule, RouterLinkActive, RouterLink, RouterOutlet, AddButtonComponent],
   providers: [UserService],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.scss'
@@ -22,6 +24,7 @@ export class SideBarComponent implements OnInit {
   userInfo? : User;
   errorMessage? : string;
   isLoading? : boolean;
+  sections = APP_SECTIONS;
 
   constructor (private userService : UserService) { }
 
