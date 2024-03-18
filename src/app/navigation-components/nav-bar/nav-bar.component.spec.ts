@@ -23,4 +23,16 @@ describe('NavBarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should toggle sidebar on button click', () => {
+    const button = fixture.nativeElement.querySelector('button');
+    expect(component.isSideBarOpened).toBeFalse();
+    button.click();
+    expect(component.isSideBarOpened).toBeTrue();
+  });
+
+  it('should render toolbar with correct title', () => {
+    const titleElement = fixture.nativeElement.querySelector('span.title');
+    expect(titleElement.textContent).toContain('Dashboard');
+  });
 });
