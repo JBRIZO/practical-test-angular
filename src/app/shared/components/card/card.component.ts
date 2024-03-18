@@ -10,5 +10,4 @@ import { Component, Input } from '@angular/core';
 })
 export class CardComponent {
   @Input() cardTitle!: string;
-  showCodeBlock = false;
 }

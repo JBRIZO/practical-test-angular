@@ -1,0 +1,989 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "Section",
+            "id": "interface-Section-becf212ac2d316e9b979af6157131008febafb00948a60f8228f09c7201c21884c7c2edb266f0195526e4e257c5efa474ae8989db936eb1ab4c75636aaffc210",
+            "file": "src/app/shared/interfaces/section.interface.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface Section {\r\n    name: string;\r\n    link: string;\r\n}",
+            "properties": [
+                {
+                    "name": "link",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "User",
+            "id": "interface-User-2e4eeecccdffdecfc7d990068712bc6d2b2385b8cfff9cc9a55fd64ceceadee08482fc066e50912afbc82be659984ab47e8b9ef8b5d0e9fa1dc2cb49d09de257",
+            "file": "src/app/shared/interfaces/user.interface.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface User {\r\n    id: number;\r\n    name: string;\r\n    email: string;\r\n}",
+            "properties": [
+                {
+                    "name": "email",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        }
+    ],
+    "injectables": [
+        {
+            "name": "UserService",
+            "id": "injectable-UserService-fd31ed6405fc3e7ea5165e01693335fb2f55f452d4d8cd8b93d93e742ab673c31ae2542b78e3cef9319b3e87ddcb754b3439cb164c7f3a0acfc7b475ccce9755",
+            "file": "src/app/shared/services/user.service.ts",
+            "properties": [
+                {
+                    "name": "url",
+                    "defaultValue": "'http://localhost:3000/user'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "getUser",
+                    "args": [
+                        {
+                            "name": "userId",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<User>",
+                    "typeParameters": [],
+                    "line": 14,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "userId",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { HttpClient, HttpErrorResponse } from '@angular/common/http';\r\nimport { Injectable } from '@angular/core';\r\nimport { Observable, catchError } from 'rxjs';\r\nimport { User } from '../interfaces/user.interface';\r\n\r\nexport const singleUserErrorMessage = 'An errXor occured while fetching user data'\r\n@Injectable()\r\nexport class UserService {\r\n\r\n  private readonly url = 'http://localhost:3000/user';\r\n\r\n  constructor(private http: HttpClient) { }\r\n\r\n  getUser(userId : number) : Observable<User> {\r\n    return this.http.get<User>(`${this.url}/${userId}`).pipe(\r\n      catchError((error : HttpErrorResponse) => {\r\n        let errorMessage = singleUserErrorMessage;\r\n        console.error(error)\r\n        throw errorMessage\r\n      })\r\n    )\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 10,
+                "jsdoctags": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "type": "injectable"
+        }
+    ],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "AboutComponent",
+            "id": "component-AboutComponent-c8d959bda8171e29d4e6fe7caeb0f737423df66943ecfebe8591e698cd078a25d85dcc16bbf1c1b4d132ebdc05d9b06ea1b23becd86ae0f43e8845379018eb79",
+            "file": "src/app/about/about.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-about",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./about.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CardComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CardComponent } from '../shared/components/card/card.component';\r\n\r\n@Component({\r\n  selector: 'app-about',\r\n  standalone: true,\r\n  imports: [CardComponent],\r\n  templateUrl: './about.component.html',\r\n  styleUrl: './about.component.scss'\r\n})\r\nexport class AboutComponent {\r\n\r\n}\r\n",
+            "styleUrl": "./about.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"container\">\r\n    <app-card cardTitle=\"Card title\" class=\"card\">\r\n        Lorem ipsum Lorem ipsum\r\n    </app-card>\r\n</div>\r\n"
+        },
+        {
+            "name": "AddButtonComponent",
+            "id": "component-AddButtonComponent-1498fdc5e0fa020e15d22360690f48165ed7c0e41d966e0e0e893d0730f76f852e26ca0d1690596f0a682ea0a8b14250c7d8cf4e207f5fbab355619a390342a8",
+            "file": "src/app/shared/components/add-button/add-button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-add-button",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./add-button.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "section",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "Section",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "RouterLink"
+                },
+                {
+                    "name": "RouterLinkActive"
+                },
+                {
+                    "name": "RouterOutlet"
+                },
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';\r\nimport { Section } from '../../interfaces/section.interface';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatButtonModule } from '@angular/material/button';\r\n\r\n@Component({\r\n  selector: 'app-add-button',\r\n  standalone: true,\r\n  imports: [MatIconModule, RouterLink, RouterLinkActive, RouterOutlet, CommonModule, MatButtonModule],\r\n  templateUrl: './add-button.component.html',\r\n  styleUrl: './add-button.component.scss'\r\n})\r\nexport class AddButtonComponent {\r\n  @Input() section? : Section;\r\n}\r\n",
+            "styleUrl": "./add-button.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"container\" *ngIf=\"section\">\r\n    <a mat-button routerLink=\"/{{section.link}}\" routerLinkActive=\"active\"  class=\"button\"><mat-icon>add</mat-icon>{{section.name}}</a>\r\n</div>\r\n"
+        },
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-0b52007e19ed3e51078e5e34e8f4110b7601d0a4d3a2d55ec810da0198613a7278544c50c2cf56c99e22528bec4295bf4245bab7e42dbe6b4d962adde485c648",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "UserService",
+                    "type": "injectable"
+                }
+            ],
+            "selector": "app-root",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "RouterOutlet"
+                },
+                {
+                    "name": "NavBarComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "HttpClientModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { HttpClientModule } from '@angular/common/http';\r\nimport { Component } from '@angular/core';\r\nimport { RouterOutlet } from '@angular/router';\r\nimport { NavBarComponent } from './navigation-components/nav-bar/nav-bar.component';\r\nimport { UserService } from './shared/services/user.service';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  standalone: true,\r\n  imports: [RouterOutlet, NavBarComponent, HttpClientModule],\r\n  providers: [UserService],\r\n  templateUrl: './app.component.html',\r\n  styleUrl: './app.component.scss'\r\n})\r\nexport class AppComponent {\r\n}\r\n",
+            "styleUrl": "./app.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<app-nav-bar></app-nav-bar>"
+        },
+        {
+            "name": "CardComponent",
+            "id": "component-CardComponent-3c3db1c5f1785e703078460e5ffd090679089198447df8d3705083ef1869d1878770b0a7bc0a01ad5fa6d86b4ff266ee71c6a6022b63c14ba1613b62806c3952",
+            "file": "src/app/shared/components/card/card.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-card",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./card.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "cardTitle",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-card',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './card.component.html',\r\n  styleUrl: './card.component.scss'\r\n})\r\nexport class CardComponent {\r\n  @Input() cardTitle!: string;\r\n}\r\n",
+            "styleUrl": "./card.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        {{ cardTitle }}\r\n    </div>\r\n    <div class=\"card-content\">\r\n        <ng-content></ng-content>\r\n    </div>\r\n</div>\r\n  "
+        },
+        {
+            "name": "HomeComponent",
+            "id": "component-HomeComponent-f765b9952e0689324a83bfa00fdde5243b45b0f067c37c3471f155ca630e23b5fc4e2418c51c115d84ffdf6256fa064cf0e4c502769f4a854c4eadd74eee969d",
+            "file": "src/app/home/home/home.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-home",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./home.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-home',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './home.component.html',\r\n  styleUrl: './home.component.scss'\r\n})\r\nexport class HomeComponent {\r\n\r\n}\r\n",
+            "styleUrl": "./home.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>home works!</p>\r\n"
+        },
+        {
+            "name": "NavBarComponent",
+            "id": "component-NavBarComponent-3375a6d5ab2f913fd17bc4c86d42cf358b454e66e6202b010c827ff09ab9d1c5fe339d24e495120acecab7fa85b6b990e6fe9608841185398770149a4ff8d5da",
+            "file": "src/app/navigation-components/nav-bar/nav-bar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-nav-bar",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./nav-bar.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "isSideBarOpened",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatToolbarModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatSidenavModule",
+                    "type": "module"
+                },
+                {
+                    "name": "RouterOutlet"
+                },
+                {
+                    "name": "SideBarComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatSidenavModule } from '@angular/material/sidenav';\r\nimport { MatToolbarModule } from '@angular/material/toolbar';\r\nimport { RouterOutlet } from '@angular/router';\r\nimport { SideBarComponent } from '../side-bar/side-bar.component';\r\n\r\n@Component({\r\n  selector: 'app-nav-bar',\r\n  standalone: true,\r\n  imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, RouterOutlet, SideBarComponent],\r\n  templateUrl: './nav-bar.component.html',\r\n  styleUrl: './nav-bar.component.scss'\r\n})\r\nexport class NavBarComponent {\r\n  isSideBarOpened : boolean = false;\r\n}\r\n",
+            "styleUrl": "./nav-bar.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<mat-toolbar color=\"primary mat-toolbar\">\r\n  <button mat-icon-button (click)=\"isSideBarOpened = !isSideBarOpened\">\r\n    <mat-icon>menu</mat-icon>\r\n  </button>\r\n  <span>Dashboard</span>\r\n  <span class=\"item-spacer\"></span>\r\n  <button mat-icon-button>\r\n    <mat-icon>search</mat-icon>\r\n  </button>\r\n  <button mat-icon-button>\r\n    <mat-icon>favorite</mat-icon>\r\n  </button>\r\n  <button mat-icon-button>\r\n    <mat-icon>more_vert</mat-icon>\r\n  </button>\r\n</mat-toolbar>\r\n<div class=\"container\">\r\n  <app-side-bar [isSideBarOpened]=\"isSideBarOpened\"></app-side-bar>\r\n</div>\r\n"
+        },
+        {
+            "name": "SideBarComponent",
+            "id": "component-SideBarComponent-879433e99a0d9e2d426755ff1603c9425f5fc35171747c2f68297b23fdcdd13972d103fc87e85d6fbc6e7046abaea19ec3b5d7668bd694dc94b3c37a5d25cc73",
+            "file": "src/app/navigation-components/side-bar/side-bar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "UserService",
+                    "type": "injectable"
+                }
+            ],
+            "selector": "app-side-bar",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./side-bar.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "isSideBarOpened",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "errorMessage",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "isLoading",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": true,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "sections",
+                    "defaultValue": "APP_SECTIONS",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                },
+                {
+                    "name": "userInfo",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "User",
+                    "optional": true,
+                    "description": "",
+                    "line": 24
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getUserInfo",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "HttpClientModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatSidenavModule",
+                    "type": "module"
+                },
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatDividerModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "RouterModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "RouterLinkActive"
+                },
+                {
+                    "name": "RouterLink"
+                },
+                {
+                    "name": "RouterOutlet"
+                },
+                {
+                    "name": "AddButtonComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport { Component, Input, OnInit } from '@angular/core';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatDividerModule } from '@angular/material/divider';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatSidenavModule } from '@angular/material/sidenav';\r\nimport { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';\r\nimport { User } from '../../shared/interfaces/user.interface';\r\nimport { UserService } from '../../shared/services/user.service';\r\nimport { AddButtonComponent } from '../../shared/components/add-button/add-button.component';\r\nimport { APP_SECTIONS } from '../../shared/constants/sections';\r\n\r\n@Component({\r\n  selector: 'app-side-bar',\r\n  standalone: true,\r\n  imports: [HttpClientModule, MatSidenavModule,CommonModule, MatDividerModule, MatIconModule, RouterModule, MatButtonModule, RouterLinkActive, RouterLink, RouterOutlet, AddButtonComponent],\r\n  providers: [UserService],\r\n  templateUrl: './side-bar.component.html',\r\n  styleUrl: './side-bar.component.scss'\r\n})\r\nexport class SideBarComponent implements OnInit {\r\n  @Input() isSideBarOpened : boolean = true;\r\n  userInfo? : User;\r\n  errorMessage? : string;\r\n  isLoading? : boolean;\r\n  sections = APP_SECTIONS;\r\n\r\n  constructor (private userService : UserService) { }\r\n\r\n  ngOnInit() {\r\n    this.getUserInfo();\r\n  }\r\n\r\n  getUserInfo() : void {\r\n    this.isLoading = true;\r\n    this.userService.getUser(1).subscribe({\r\n      next: user => {\r\n        this.userInfo = user\r\n        this.isLoading = false;\r\n      },\r\n      error: err => {\r\n        this.errorMessage = err\r\n        this.isLoading = false;\r\n      }\r\n    })\r\n  }\r\n}\r\n",
+            "styleUrl": "./side-bar.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "userService",
+                        "type": "UserService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 27,
+                "jsdoctags": [
+                    {
+                        "name": "userService",
+                        "type": "UserService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<mat-sidenav-container class=\"sidebar-container\">\r\n    <mat-sidenav #sidenav mode=\"side\" [(opened)]=\"isSideBarOpened\" class=\"sidebar\">\r\n      <div class=\"user\">\r\n        <div class=\"user-icon\">\r\n          <img src=\"./../../../assets/user-png.png\" alt=\"\">\r\n        </div>\r\n        <ng-container *ngIf=\"isLoading; else content\">\r\n          <div class=\"loading-message\">\r\n            Loading user information...\r\n          </div>\r\n        </ng-container>\r\n        <ng-template #content>\r\n          <ng-container *ngIf=\"userInfo; else noUserInfo\">\r\n            <div class=\"user-info\">\r\n              <h2 class=\"username\">{{ userInfo.name }}</h2>\r\n              <p class=\"email\">{{ userInfo.email }}</p>\r\n            </div>\r\n          </ng-container>\r\n        \r\n          <ng-template #noUserInfo>\r\n            <div class=\"no-user-message\">\r\n              No user information available.\r\n            </div>\r\n          </ng-template>\r\n        </ng-template>\r\n        \r\n      </div>\r\n      <mat-divider></mat-divider>\r\n      <div class=\"links-container\">\r\n        <app-add-button *ngFor=\"let section of sections\" [section]=\"section\"></app-add-button>\r\n      </div>\r\n    </mat-sidenav>\r\n    <mat-sidenav-content class=\"content\">\r\n      <router-outlet></router-outlet>\r\n  </mat-sidenav-content>\r\n</mat-sidenav-container>"
+        }
+    ],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "APP_SECTIONS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/constants/sections.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Section[]",
+                "defaultValue": "[\r\n    {\r\n        name: 'Home',\r\n        link: 'home'\r\n    },\r\n    {\r\n        name: 'About',\r\n        link: 'about'\r\n    }\r\n]"
+            },
+            {
+                "name": "appConfig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.config.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ApplicationConfig",
+                "defaultValue": "{\r\n  providers: [provideRouter(routes), provideClientHydration(), provideAnimationsAsync()]\r\n}"
+            },
+            {
+                "name": "bootstrap",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/main.server.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => bootstrapApplication(AppComponent, config)"
+            },
+            {
+                "name": "config",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.config.server.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "mergeApplicationConfig(appConfig, serverConfig)"
+            },
+            {
+                "name": "serverConfig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.config.server.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ApplicationConfig",
+                "defaultValue": "{\r\n  providers: [\r\n    provideServerRendering()\r\n  ]\r\n}"
+            },
+            {
+                "name": "singleUserErrorMessage",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/services/user.service.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'An errXor occured while fetching user data'"
+            }
+        ],
+        "functions": [],
+        "typealiases": [],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/app/shared/constants/sections.ts": [
+                {
+                    "name": "APP_SECTIONS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/constants/sections.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Section[]",
+                    "defaultValue": "[\r\n    {\r\n        name: 'Home',\r\n        link: 'home'\r\n    },\r\n    {\r\n        name: 'About',\r\n        link: 'about'\r\n    }\r\n]"
+                }
+            ],
+            "src/app/app.config.ts": [
+                {
+                    "name": "appConfig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.config.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApplicationConfig",
+                    "defaultValue": "{\r\n  providers: [provideRouter(routes), provideClientHydration(), provideAnimationsAsync()]\r\n}"
+                }
+            ],
+            "src/main.server.ts": [
+                {
+                    "name": "bootstrap",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/main.server.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => bootstrapApplication(AppComponent, config)"
+                }
+            ],
+            "src/app/app.config.server.ts": [
+                {
+                    "name": "config",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.config.server.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "mergeApplicationConfig(appConfig, serverConfig)"
+                },
+                {
+                    "name": "serverConfig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.config.server.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApplicationConfig",
+                    "defaultValue": "{\r\n  providers: [\r\n    provideServerRendering()\r\n  ]\r\n}"
+                }
+            ],
+            "src/app/shared/services/user.service.ts": [
+                {
+                    "name": "singleUserErrorMessage",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/services/user.service.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'An errXor occured while fetching user data'"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {}
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "src/app/about/about.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AboutComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.config.server.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "config",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.config.server.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "serverConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.config.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "appConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/home/home/home.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HomeComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/navigation-components/nav-bar/nav-bar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavBarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/navigation-components/side-bar/side-bar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SideBarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/add-button/add-button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AddButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/card/card.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/constants/sections.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "APP_SECTIONS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/interfaces/section.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Section",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/interfaces/user.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "User",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/services/user.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "UserService",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/services/user.service.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "singleUserErrorMessage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/main.server.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "bootstrap",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}
