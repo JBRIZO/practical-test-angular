@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
 import { User } from '../interfaces/user.interface';
 
-export const singleUserErrorMessage = 'An errXor occured while fetching user data'
+export const singleUserErrorMessage = 'An error occured while fetching user data'
 @Injectable()
 export class UserService {
 
