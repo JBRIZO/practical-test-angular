@@ -15,12 +15,5 @@
   </button>
 </mat-toolbar>
 <div class="container">
-  <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" [(opened)]="isSideBarOpened">
-      Sidenav content
-    </mat-sidenav>
-    <mat-sidenav-content>
-      conetnasf
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+  <app-side-bar [isSideBarOpened]="isSideBarOpened"></app-side-bar>
 </div>

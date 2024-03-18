@@ -1,0 +1,35 @@
+.sidebar-container {
+    height: 100%;
+
+    .sidebar {
+    }
+
+    .user {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 10px;
+        min-width: 300px;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .content {
+        background-color: lightgray;
+    }
+
+    .links-container {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+    }
+
+}
+
+button {
+    display: flex;
+    
+}
