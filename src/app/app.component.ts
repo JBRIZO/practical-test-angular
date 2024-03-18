@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavBarComponent } from './navigation-components/nav-bar/nav-bar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './shared/services/user.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavBarComponent],
+  imports: [RouterOutlet, NavBarComponent, HttpClientModule],
+  providers: [UserService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

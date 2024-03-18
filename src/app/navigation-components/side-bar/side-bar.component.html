@@ -4,10 +4,26 @@
         <div class="user-icon">
           <mat-icon>search</mat-icon>
         </div>
-        <div class="user-info">
-          <h2 class="username">User</h2>
-          <p class="email">email</p>
-        </div>
+        <ng-container *ngIf="isLoading; else content">
+          <div class="loading-message">
+            Loading user information...
+          </div>
+        </ng-container>
+        <ng-template #content>
+          <ng-container *ngIf="userInfo; else noUserInfo">
+            <div class="user-info">
+              <h2 class="username">{{ userInfo.name }}</h2>
+              <p class="email">{{ userInfo.email }}</p>
+            </div>
+          </ng-container>
+        
+          <ng-template #noUserInfo>
+            <div class="no-user-message">
+              No user information available.
+            </div>
+          </ng-template>
+        </ng-template>
+        
       </div>
       <mat-divider></mat-divider>
       <div class="links-container">

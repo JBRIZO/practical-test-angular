@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
 import { User } from '../interfaces/user.interface';
 
+export const singleUserErrorMessage = 'An errXor occured while fetching user data'
 @Injectable()
 export class UserService {
 
@@ -10,7 +11,13 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUser() : Observable<User> {
-    return this.http.get<User>(this.url)
+  getUser(userId : number) : Observable<User> {
+    return this.http.get<User>(`${this.url}/${userId}`).pipe(
+      catchError((error : HttpErrorResponse) => {
+        let errorMessage = singleUserErrorMessage;
+        console.error(error)
+        throw errorMessage
+      })
+    )
   }
 }
